@@ -1,0 +1,6 @@
+.git
+.idea
+nbproject
+*.md
+LICENSE
+.DS_Store
