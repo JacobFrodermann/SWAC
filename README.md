@@ -39,6 +39,27 @@ SWAC itself does not ship a `configuration.js`; the embedding application must
 provide one at its own root (for example
 `SmartDataJobs/web/configuration.js`) to define `SWAC_config`.
 
+## User component URL options
+
+`swac/components/User/User.js` prefixes `SWAC_config.app_root` (the context
+root without trailing slash) to every URL option it builds: `afterLoginLoc`,
+`afterLogoutLoc`, `loggedinRedirects` values, `accountURL` and
+`registrationLink`.
+
+Pass application-absolute values starting with `/`:
+
+```js
+var user_options = {
+    loginURL: '/SmartUser/smartuser/user/performLogin',
+    afterLoginLoc: '/sites/admin/account.html',
+    afterLogoutLoc: '/sites/admin/login.html'
+};
+```
+
+A relative value such as `sites/admin/account.html` is concatenated without a
+separator and yields `/SmartUser../sites/admin/account.html`, which does not
+exist.
+
 ## Licensing
 
 Most parts of this software are useable under the terms of the LGPL.
